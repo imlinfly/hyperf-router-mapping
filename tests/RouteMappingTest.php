@@ -29,6 +29,7 @@ class RouteMappingTest extends TestCase
         $config->set('router_mapping', [
             'Api\AaaBbb' => 'api_aaa_bbb',
             'Api' => 'api',
+            'ApiV1' => 'api/v1',
         ]);
 
         $items = [
@@ -40,6 +41,12 @@ class RouteMappingTest extends TestCase
             ['class' => 'TestApp\Api\AaaBbb\Controller\TestController', 'prefix' => '', 'result' => '/api_aaa_bbb/test'],
             ['class' => 'TestApp\Api\BbbAaa\Controller\TestController', 'prefix' => 'test_api', 'result' => '/api/bbb_aaa/test_api'],
             ['class' => 'TestApp\Api\BbbAaa\Controller\TestController', 'prefix' => '', 'result' => '/api/bbb_aaa/test'],
+            ['class' => 'TestApp\Api\Demo\Controller\DemoController', 'prefix' => '', 'result' => '/api/demo/demo'],
+            ['class' => 'TestApp\Api\Demo\Controller\DemoController', 'prefix' => '(null)', 'result' => '/api/demo'],
+            ['class' => 'TestApp\Api\Demo\Controller\DemoController', 'prefix' => '/demo', 'result' => '/api/demo'],
+            ['class' => 'TestApp\Api\User\Demo\Controller\DemoController', 'prefix' => '/user/demo', 'result' => '/api/user/demo'],
+            ['class' => 'TestApp\Api\User\Demo\Controller\DemoController', 'prefix' => '(null)', 'result' => '/api/user/demo'],
+            ['class' => 'TestApp\ApiV1\User\Controller\AuthController', 'prefix' => '', 'result' => '/api/v1/user/auth'],
         ];
 
         $instance = $container->get(DispatcherFactory::class);
