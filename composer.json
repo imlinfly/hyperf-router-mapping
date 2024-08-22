@@ -22,5 +22,8 @@
     "hyperf": {
       "config": "Lynnfly\\HyperfRouterMapping\\ConfigProvider"
     }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.5"
   }
 }
